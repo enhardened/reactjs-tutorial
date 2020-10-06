@@ -67,6 +67,7 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        location: [Math.floor(i/3), i%3],
       }]),
       stepNumber: history.length,
       isXNext: !this.state.isXNext,
@@ -88,7 +89,7 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move 
-        ? 'Go to move #' + move
+        ? 'Go to move #' + move + '(' + step.location[0] + ',' + step.location[1] + ')'
         : 'Go to game start';
 
       return (
